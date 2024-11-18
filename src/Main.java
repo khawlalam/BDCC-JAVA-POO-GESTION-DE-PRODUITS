@@ -15,13 +15,16 @@ public class Main {
                     nomsProduits[currentIndex ]= nom;
                     quantities[currentIndex ] = quantite;
                      Prix[currentIndex]= prix;
-
-                 currentIndex++;
+                              currentIndex++;
         System.out.println("Produit ajouté avec succès .... !");
     }
 
-
     //modifier
+  static void modifierProduit(int code, String nouveauNom, int nouvelleQuantite, double nouveauPrix){
+
+
+  }
+
 
     //supprimer
 
@@ -46,7 +49,9 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner clavier=new Scanner(System.in);
-        int op;
+        int op,code,qte;
+        double prix;
+        String nom;
         System.out.println("------Gestion de Stock------");
         System.out.println("1. Ajouter un produit");
         System.out.println("2. Modifier un produit");
@@ -60,11 +65,17 @@ public class Main {
 
 
         switch (op){
-            //aouter un produit
+            //Ajouter un produit
             case 1:
-               ajouterProduit(17,"DELL",85,15777);
-                ajouterProduit(13,"hp",10,19637);
-
+                System.out.println("enter le code :");
+                code=clavier.nextInt();
+                System.out.println("enter le nom:");
+                nom=clavier.next();
+                System.out.println("enter la quantité :");
+                qte=clavier.nextInt();
+                System.out.println("enter le prix:");
+                prix=clavier.nextDouble();
+                ajouterProduit(code,nom,qte,prix);
                 afficherProduits();
             return;
 
