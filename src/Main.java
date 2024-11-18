@@ -17,7 +17,7 @@ public class Main {
                      Prix[currentIndex]= prix;
 
                  currentIndex++;
-        System.out.println("Produit ajouté avec succès !");
+        System.out.println("Produit ajouté avec succès .... !");
     }
 
 
