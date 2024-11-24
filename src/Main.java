@@ -93,7 +93,7 @@ public class Main {
     //calculer Valeur de stock
         static void calculerValeurStock(){
                 int some = 0;
-            for (int i = 0; i < quantities.length; i++) {
+            for(int i = 0; i < quantities.length; i++) {
                 some=quantities[i]+some;
             }
             System.out.println("la some est "+some);
