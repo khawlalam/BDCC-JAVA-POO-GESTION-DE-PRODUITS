@@ -92,11 +92,11 @@ public class Main {
     }
     //calculer Valeur de stock
         static void calculerValeurStock(){
-                int some = 0;
-            for(int i = 0; i < quantities.length; i++) {
-                some=quantities[i]+some;
+                double stock = 0;
+            for(int i = 0; i < currentIndex; i++) {
+                stock+=quantities[i] * prixProduits[i];
             }
-            System.out.println("la some est "+some);
+            System.out.println("Le stock est "+stock);
 
         }
     public static void main(String[] args) {
