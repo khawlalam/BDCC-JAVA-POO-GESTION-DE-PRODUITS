@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     static int maxsize=100;
     static int[] codeProduit = new int[maxsize];
@@ -12,19 +11,22 @@ public class Main {
 
     //Ajouter Produit
     static void ajouterProduit(int code, String nom, int quantite, double prix){
+           if(currentIndex>=maxsize){
+               System.out.println("Impossible d'ajouter des produits, la taille est insuffisante ");
+           }
                     codeProduit[currentIndex]= code;
                     nomsProduits[currentIndex ]= nom;
                     quantities[currentIndex ] = quantite;
                     prixProduits[currentIndex]= prix;
-                              currentIndex++;
+                    currentIndex++;
         System.out.println("Produit ajouté avec succès .... !");
     }
 
-    //modifier
+    //Modifier les produits
   static void modifierProduit(int code, String nouveauNom, int nouvelleQuantite, double nouveauPrix){
 
         for (int i = 0; i < currentIndex; i++) {
-            if(code!=0 && nouveauNom!=null && nouvelleQuantite!=0 && nouveauPrix!=0){
+            if(nouveauNom!=null && nouvelleQuantite!=0 && nouveauPrix!=0){
                 codeProduit[i]=code;
                 nomsProduits[i]=nouveauNom;
                 quantities[i]=nouvelleQuantite;
@@ -44,11 +46,12 @@ public class Main {
 
   }
 
-    //afficher
+    //Afficher Produits
     static void afficherProduits() {
         if(codeProduit[0]==0){
             System.out.println("Pas de produit, merci d'ajouter des nouveaux produit");
-        }else{
+        }
+        else{
             for (int i = 0; i < currentIndex; i++) {
                 System.out.println("Code: " + codeProduit[i] +
                         "\t Nom: " + nomsProduits[i] +
@@ -69,7 +72,7 @@ public class Main {
                         "\t Prix: " + prixProduits[i]);
                 break;
             }else{
-                System.out.println("produit does not exist");
+                System.out.println("produit introuvable !");
 
             }
 
@@ -80,14 +83,20 @@ public class Main {
     static void supprimerProduit(int code) {
         for (int i = 0; i < currentIndex; i++) {
             if (codeProduit[i] == code) {
-                codeProduit[i] = 0;
-                nomsProduits[i] = null;
-                quantities[i] = 0;
-                prixProduits[i] = 0;
+                for (int j = i; j < currentIndex - 1; j++) {
+                    codeProduit[j] = codeProduit[j + 1];
+                    nomsProduits[j] = nomsProduits[j + 1];
+                    quantities[j] = quantities[j + 1];
+                    prixProduits[j] = prixProduits[j + 1];
+                }
+                codeProduit[currentIndex - 1] = 0;
+                nomsProduits[currentIndex - 1] = null;
+                quantities[currentIndex - 1] = 0;
+                prixProduits[currentIndex - 1] = 0;
                 currentIndex--;
+                System.out.println("Produit supprimé avec succès!");
                 break;
             }
-
         }
     }
     //calculer Valeur de stock
